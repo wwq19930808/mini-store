@@ -1,0 +1,31 @@
+{
+  "name": "mini-store",
+  "version": "0.0.1",
+  "description": "小程序全局状态管理器",
+  "main": "./dist/mini-store.umd.js",
+  "module": "./dist/mini-store.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mini-store.es.js",
+      "require": "./dist/mini-store.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "小程序",
+    "全局状态管理"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.isequal": "^4.5.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "vite": "^5.4.2"
+  }
+}
