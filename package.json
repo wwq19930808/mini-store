@@ -1,9 +1,10 @@
 {
-  "name": "mini-store",
+  "name": "mini-apps-store",
   "version": "0.0.1",
   "description": "小程序全局状态管理器",
   "main": "./dist/mini-store.umd.js",
   "module": "./dist/mini-store.es.js",
+  "github": "https://github.com/wwq19930808/mini-store",
   "exports": {
     ".": {
       "import": "./dist/mini-store.es.js",

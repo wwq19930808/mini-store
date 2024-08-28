@@ -1,5 +1,6 @@
 import { register, unregister } from './store/register';
 import { store } from './store/store';
+import cloneDeep from 'lodash.clonedeep';
 
 function injectStore(prototype, isComponent) {
   if (!prototype.mapStateToData) {
@@ -78,4 +79,5 @@ function componentInject() {
 
 export function inject() {
   pageInject();
+  componentInject();
 }

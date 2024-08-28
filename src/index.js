@@ -1,5 +1,5 @@
 import { inject } from './inject';
-import combineReducer from './combineReducer';
+import { combineReducer } from './combineReducer';
 import { store } from './store/store';
 import { createStore } from './store/createStore';
 

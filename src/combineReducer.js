@@ -1,4 +1,4 @@
-export default combineReducers = (reducers) => {
+export function combineReducer(reducers) {
   return (state = {}, action) => {
     let newState = {};
     for (let key in reducers) {
@@ -6,4 +6,4 @@ export default combineReducers = (reducers) => {
     }
     return newState;
   };
-};
+}

@@ -20,7 +20,7 @@ const createStore = (reducer) => {
       const { instance, mapStateToData, originData } = value;
       const data = mapStateToData(store.state);
       if (isEqual(data, originData)) {
-        return;
+        continue;
       }
       value.originData = data;
       instance.setData({ ...data });
