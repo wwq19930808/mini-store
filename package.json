@@ -1,6 +1,6 @@
 {
   "name": "mini-apps-store",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "小程序全局状态管理器",
   "main": "./dist/mini-store.umd.js",
   "module": "./dist/mini-store.es.js",
