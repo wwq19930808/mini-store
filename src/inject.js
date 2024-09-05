@@ -15,7 +15,7 @@ function injectStore(prototype, isComponent) {
         ...data,
       });
       register(this, prototype.mapStateToData, cloneDeep(data));
-      originInit.apply(this, args);
+      originInit && originInit.apply(this, args);
     };
   } else {
     const originOnload = prototype.onLoad;
@@ -26,7 +26,7 @@ function injectStore(prototype, isComponent) {
         ...data,
       });
       register(this, prototype.mapStateToData, cloneDeep(data));
-      originOnload.apply(this, args);
+      originOnload && originOnload.apply(this, args);
     };
   }
 
@@ -35,13 +35,13 @@ function injectStore(prototype, isComponent) {
     const didUnmount = prototype.didUnmount;
     prototype.didUnmount = function (...args) {
       unregister(this.$id);
-      didUnmount.apply(this, args);
+      didUnmount && didUnmount.apply(this, args);
     };
   } else {
     const onUnload = prototype.onUnload;
     prototype.onUnload = function (...args) {
       unregister(this.$id);
-      onUnload.apply(this, args);
+      onUnload && onUnload.apply(this, args);
     };
   }
 }
