@@ -1,6 +1,7 @@
 import { register, unregister } from './store/register';
 import { store } from './store/store';
 import cloneDeep from 'lodash.clonedeep';
+let uuid = 0;
 
 function injectStore(prototype, isComponent) {
   if (!prototype.mapStateToData) {
@@ -10,7 +11,8 @@ function injectStore(prototype, isComponent) {
   if (isComponent) {
     const originInit = prototype.onInit;
     prototype.onInit = function (...args) {
-      const data = prototype.mapStateToData(store.state);
+      const data = cloneDeep(prototype.mapStateToData(store.state));
+      this.$miniAppsStoreId = uuid++;
       this.setData({
         ...data,
       });
@@ -20,8 +22,8 @@ function injectStore(prototype, isComponent) {
   } else {
     const originOnload = prototype.onLoad;
     prototype.onLoad = function (...args) {
-      const data = prototype.mapStateToData(store.state);
-
+      const data = cloneDeep(prototype.mapStateToData(store.state));
+      this.$miniAppsStoreId = uuid++;
       this.setData({
         ...data,
       });
@@ -34,13 +36,13 @@ function injectStore(prototype, isComponent) {
   if (isComponent) {
     const didUnmount = prototype.didUnmount;
     prototype.didUnmount = function (...args) {
-      unregister(this.$id);
+      unregister(this.$miniAppsStoreId);
       didUnmount && didUnmount.apply(this, args);
     };
   } else {
     const onUnload = prototype.onUnload;
     prototype.onUnload = function (...args) {
-      unregister(this.$id);
+      unregister(this.$miniAppsStoreId);
       onUnload && onUnload.apply(this, args);
     };
   }

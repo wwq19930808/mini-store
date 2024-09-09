@@ -18,7 +18,7 @@ const createStore = (reducer) => {
     const instanceMap = getInstanceMap();
     for (const value of instanceMap.values()) {
       const { instance, mapStateToData, originData } = value;
-      const data = mapStateToData(store.state);
+      const data = cloneDeep(mapStateToData(store.state));
       if (isEqual(data, originData)) {
         continue;
       }

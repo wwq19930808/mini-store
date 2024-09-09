@@ -1,7 +1,7 @@
 const instanceMap = new Map();
 
 export function register(instance, mapStateToData, originData) {
-  const $id = instance.$id;
+  const $id = instance.$miniAppsStoreId;
   if (instanceMap.has($id)) {
     return;
   }
